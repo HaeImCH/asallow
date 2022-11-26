@@ -1,4 +1,4 @@
-module github.com/HaeImCH/asblock
+module github.com/HaeImCH/asblocktest
 
 go 1.14
 
