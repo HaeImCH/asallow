@@ -1,4 +1,4 @@
-module github.com/42wim/asallow
+module github.com/HaeImCH/asblock
 
 go 1.14
 
