@@ -157,12 +157,12 @@ func parseBody(body []byte, id int, comment string, sc chan string) {
 		if ip != nil {           // it really is an IP
 			if ip.To4() != nil { // is it IPv4
 				ipset.Lock()
-				ipset.v4 += "add AS_allow_swap " + prefix + " comment " + comment_prefix + comment + "\n"
+				ipset.v4 += "add AS_block_swap " + prefix + " comment " + comment_prefix + comment + "\n"
 				ipset.v4count += 1
 				ipset.Unlock()
 			} else { // ipv6
 				ipset.Lock()
-				ipset.v6 += "add AS_allow_swap6 " + prefix + " comment " + comment_prefix + comment + "\n"
+				ipset.v6 += "add AS_block_swap6 " + prefix + " comment " + comment_prefix + comment + "\n"
 				ipset.v6count += 1
 				ipset.Unlock()
 			}
@@ -179,10 +179,10 @@ func addAllowed(allowed []string) {
 		ip := isIpOrCidr(el)
 		if ip != nil { //really an IP
 			if ip.To4() != nil {
-				ipset.v4 += "add AS_allow_swap " + el + " comment \"read from asallow.conf\"\n"
+				ipset.v4 += "add AS_block_swap " + el + " comment \"read from asallow.conf\"\n"
 				ipset.v4count += 1
 			} else {
-				ipset.v6 += "add AS_allow_swap6 " + el + " comment \"read from asallow.conf\"\n"
+				ipset.v6 += "add AS_block_swap6 " + el + " comment \"read from asallow.conf\"\n"
 				ipset.v6count += 1
 			}
 		} else {
