@@ -86,8 +86,8 @@ func isIpOrCidr(ipcidr string) *net.IP {
 }
 
 func doipset(cfg config) {
-	ipset_header := "create AS_allow hash:net family inet comment\n"
-	ipset_header += "create AS_allow6 hash:net family inet6 comment\n"
+	ipset_header := "create AS_block hash:net family inet comment\n"
+	ipset_header += "create AS_block6 hash:net family inet6 comment\n"
 	ipset_header += "create AS_allow_swap hash:net family inet comment\n"
 	ipset_header += "create AS_allow_swap6 hash:net family inet6 comment\n"
 	ipset_footer := "swap AS_allow AS_allow_swap\n"
@@ -233,5 +233,5 @@ func main() {
 	doipset(cfg)
 
 	fmt.Printf("%v ipv4 / %v ipv6 subnets added\n", ipset.v4count, ipset.v6count)
-	fmt.Println("AS_allow and AS_allow6 ipset created/modified")
+	fmt.Println("AS_block and AS_block6 ipset created/modified")
 }
