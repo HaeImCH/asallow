@@ -179,10 +179,10 @@ func addAllowed(allowed []string) {
 		ip := isIpOrCidr(el)
 		if ip != nil { //really an IP
 			if ip.To4() != nil {
-				ipset.v4 += "add AS_block_swap " + el + " comment \"read from asallow.conf\"\n"
+				ipset.v4 += "add AS_block_swap " + el + " comment \"read from asblock.conf\"\n"
 				ipset.v4count += 1
 			} else {
-				ipset.v6 += "add AS_block_swap6 " + el + " comment \"read from asallow.conf\"\n"
+				ipset.v6 += "add AS_block_swap6 " + el + " comment \"read from asblock.conf\"\n"
 				ipset.v6count += 1
 			}
 		} else {
@@ -196,7 +196,7 @@ func main() {
 		log.Fatal("This needs to be run as root")
 	}
 	runtime.GOMAXPROCS(runtime.NumCPU())
-	cfgfile := flag.String("conf", "asallow.conf", "a valid config file")
+	cfgfile := flag.String("conf", "asblock.conf", "a valid config file")
 	flag.Parse()
 
 	counter := 0
